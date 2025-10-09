@@ -1,4 +1,4 @@
-import { MapPin, Smartphone, Handshake } from 'lucide-react';
+import { MapPin, ShoppingBag, Handshake } from 'lucide-react';
 
 const strengths = [
   {
@@ -7,7 +7,7 @@ const strengths = [
     description: 'Strategically securing high-footfall spaces to maximize brand exposure.',
   },
   {
-    icon: Smartphone,
+    icon: ShoppingBag,
     title: 'Omnichannel Strategy',
     description: 'Blending digital and physical retail for a seamless shopping experience.',
   },
