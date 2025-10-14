@@ -3,27 +3,27 @@ import { useState } from 'react';
 const brandsData = [
   {
     name: 'Subdued',
-    videoUrl: 'https://example.com/subdued-video.mp4',
+    videoUrl: '/subdued.mp4',
     posterImage: '/pn0daficol1bb-1.jpg',
   },
   {
     name: 'Parfois',
-    videoUrl: 'https://example.com/parfois-video.mp4',
+    videoUrl: '/parfois.mp4',
     posterImage: '/2_clothing copy copy.webp',
   },
   {
     name: 'Jaune',
-    videoUrl: 'https://example.com/jaune-video.mp4',
+    videoUrl: '/jaune.mp4',
     posterImage: '/image copy copy copy copy copy copy copy copy copy copy.png',
   },
   {
     name: 'OXXO',
-    videoUrl: 'https://example.com/oxxo-video.mp4',
+    videoUrl: '/oxxo.mp4',
     posterImage: '/Gemini_Generated_Image_q8im0hq8im0hq8im.png',
   },
   {
     name: 'Kusmi Tea',
-    videoUrl: 'https://example.com/kusmi-video.mp4',
+    videoUrl: '/kusmi.mp4',
     posterImage: '/pexels-dickydikiw-34170576 copy.jpg',
   },
 ];
