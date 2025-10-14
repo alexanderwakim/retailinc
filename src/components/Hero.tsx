@@ -19,15 +19,6 @@ export default function Hero() {
       />
 
       <div className="relative z-10 text-center text-gray-900 max-w-5xl px-6 mt-32">
-        <h1
-          className="text-4xl md:text-6xl font-semibold mb-6 tracking-tight leading-tight"
-          style={{ fontFamily: 'Montserrat, sans-serif' }}
-        >
-          Where Global Brands Meet<br />Proven Retail Execution.
-        </h1>
-        <p className="text-base md:text-lg mb-12 text-gray-900 max-w-3xl mx-auto leading-relaxed">
-          Retail Inc connects world-class fashion labels with Lebanon's most dynamic retail network.
-        </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             onClick={() => scrollToSection('brands')}
