@@ -1,7 +1,6 @@
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import BrandsShowcase from './components/BrandsShowcase';
-import Brands from './components/Brands';
 import ByTheNumbers from './components/ByTheNumbers';
 import OurStrengths from './components/OurStrengths';
 import About from './components/About';
@@ -14,7 +13,6 @@ function App() {
       <Navigation />
       <Hero />
       <BrandsShowcase />
-      <Brands />
       <ByTheNumbers />
       <OurStrengths />
       <About />
