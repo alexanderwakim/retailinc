@@ -3,7 +3,8 @@ import { useState } from 'react';
 const brandsData = [
   {
     name: 'Subdued',
-    videoUrl: '/subdued.mp4',
+    videoUrl:WhatsApp Video 2025-10-13 at 10.45.45 PM.mp4
+  '/subdued.mp4',
     posterImage: '/pn0daficol1bb-1.jpg',
   },
   {
