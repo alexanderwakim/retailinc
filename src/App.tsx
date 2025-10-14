@@ -1,5 +1,6 @@
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
+import BrandsShowcase from './components/BrandsShowcase';
 import Brands from './components/Brands';
 import ByTheNumbers from './components/ByTheNumbers';
 import OurStrengths from './components/OurStrengths';
@@ -12,6 +13,7 @@ function App() {
     <div className="min-h-screen bg-white">
       <Navigation />
       <Hero />
+      <BrandsShowcase />
       <Brands />
       <ByTheNumbers />
       <OurStrengths />
