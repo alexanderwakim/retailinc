@@ -28,7 +28,6 @@ const brands = [
     contacts: [
       { location: 'ABC Achrafieh', phone: '+961 81 227 100' },
       { location: 'ABC Dbayeh', phone: '+961 81 227 100' },
-      { location: 'ABC Verdun', phone: '+961 81 227 100' },
       { location: 'City Mall', phone: '+961 81 227 100' },
       { location: 'Beirut City Centre', phone: '+961 81 227 100' },
       { location: 'Tripoli Square', phone: '+961 81 227 100' },
