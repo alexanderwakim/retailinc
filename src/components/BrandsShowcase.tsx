@@ -73,7 +73,6 @@ export default function BrandsShowcase() {
             loop
             muted
             playsInline
-            poster={selectedBrand.posterImage}
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source src={selectedBrand.videoUrl} type="video/mp4" />
