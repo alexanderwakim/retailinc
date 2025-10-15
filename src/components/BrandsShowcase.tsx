@@ -9,9 +9,9 @@ const brandsData = [
   },
   {
     name: 'Parfois',
-    videoUrl: 'https://www.youtube.com/embed/y0mhodH7A2k',
+    videoUrl: '/parfoix.mp4',
     posterImage: '/2_clothing copy copy.webp',
-    isYouTube: true,
+    isYouTube: false,
   },
   {
     name: 'Jaune',
