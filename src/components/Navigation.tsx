@@ -16,7 +16,7 @@ export default function Navigation() {
     <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
-          <div className="h-8 md:h-10">
+          <div className="h-8 md:h-10 -ml-2">
             <img
               src="/WhatsApp_Image_2025-10-08_at_5.57.47_PM-removebg-preview.png"
               alt="Retail Inc"
