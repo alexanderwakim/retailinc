@@ -18,7 +18,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16 md:h-20">
           <div className="h-8 md:h-10">
             <img
-              src="/WhatsApp Image 2025-10-08 at 5.57.47 PM.jpeg"
+              src="/WhatsApp_Image_2025-10-08_at_5.57.47_PM-removebg-preview.png"
               alt="Retail Inc"
               className="h-full w-auto object-contain"
             />
