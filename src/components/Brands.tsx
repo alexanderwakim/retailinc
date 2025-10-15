@@ -6,12 +6,14 @@ const brands = [
     description: 'Gen Z-focused Italian fashion brand delivering contemporary streetwear and bold statement pieces.',
     image: '/pn0daficol1bb-1.jpg',
     link: 'https://subdued.retail-inc.com',
+    id: 'brand-subdued',
   },
   {
     name: 'Parfois',
     description: 'Affordable European accessories label for fashion-forward women seeking timeless elegance.',
     image: '/2_clothing copy copy.webp',
     link: 'https://parfois.retail-inc.com',
+    id: 'brand-parfois',
     contacts: [
       { location: 'ABC Achrafieh L1', phone: '+961 01 322 361' },
       { location: 'ABC Verdun L1', phone: '+961 01 798 604' },
@@ -25,6 +27,7 @@ const brands = [
     description: 'Lebanese menswear brand blending active, casual, and formal styles with Mediterranean flair.',
     image: '/image copy copy copy copy copy copy copy copy copy copy.png',
     link: 'https://jaune.retail-inc.com',
+    id: 'brand-jaune',
     contacts: [
       { location: 'ABC Achrafieh', phone: '+961 81 227 100' },
       { location: 'ABC Dbayeh', phone: '+961 81 227 100' },
@@ -38,6 +41,7 @@ const brands = [
     description: 'Turkish womenswear brand offering bold everyday fashion for the modern, confident woman.',
     image: '/Gemini_Generated_Image_q8im0hq8im0hq8im.png',
     link: '#',
+    id: 'brand-oxxo',
     contacts: [
       { location: 'Beirut City Centre, L0', phone: '+961 01 291 255' },
     ],
@@ -47,6 +51,7 @@ const brands = [
     description: 'Parisian heritage luxury tea brand with organic blends and artisanal craftsmanship.',
     image: '/pexels-dickydikiw-34170576 copy.jpg',
     link: '#',
+    id: 'brand-kusmi-tea',
     contacts: [
       { location: 'ABC Achrafieh', phone: '+961 01 322 066' },
     ],
@@ -71,6 +76,7 @@ export default function Brands() {
           {brands.slice(0, 3).map((brand, index) => (
             <div
               key={index}
+              id={brand.id}
               className={`relative bg-white overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 ${brand.name === 'Subdued' ? 'cursor-pointer group' : 'group'}`}
               style={{ perspective: '1000px', minHeight: '540px' }}
               onClick={brand.name === 'Subdued' ? () => window.open(brand.link, '_blank') : undefined}
@@ -178,6 +184,7 @@ export default function Brands() {
           {brands.slice(3).map((brand, index) => (
             <div
               key={index + 3}
+              id={brand.id}
               className="group relative bg-white overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
               style={{ perspective: '1000px', minHeight: '540px' }}
             >

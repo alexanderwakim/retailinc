@@ -6,30 +6,35 @@ const brandsData = [
     videoUrl: '/subdued.mp4',
     posterImage: '/pn0daficol1bb-1.jpg',
     isYouTube: false,
+    sectionId: 'brand-subdued',
   },
   {
     name: 'Parfois',
     videoUrl: '/YTDown.com_Shorts_Parfois-Special-Christmas_Media_y0mhodH7A2k_001_1080p.mp4',
     posterImage: '/2_clothing copy copy.webp',
     isYouTube: false,
+    sectionId: 'brand-parfois',
   },
   {
     name: 'Jaune',
     videoUrl: '/jaune.mp4',
     posterImage: '/image copy copy copy copy copy copy copy copy copy copy.png',
     isYouTube: false,
+    sectionId: 'brand-jaune',
   },
   {
     name: 'OXXO',
     videoUrl: '/oxxo video.mp4',
     posterImage: '/Gemini_Generated_Image_q8im0hq8im0hq8im.png',
     isYouTube: false,
+    sectionId: 'brand-oxxo',
   },
   {
     name: 'Kusmi Tea',
     videoUrl: '/kusmi.mp4',
     posterImage: '/pexels-dickydikiw-34170576 copy.jpg',
     isYouTube: false,
+    sectionId: 'brand-kusmi-tea',
   },
 ];
 
@@ -84,7 +89,15 @@ export default function BrandsShowcase() {
           >
             {selectedBrand.name}
           </h2>
-          <button className="text-white text-sm tracking-widest uppercase border-b border-white pb-1 hover:opacity-70 transition-opacity">
+          <button
+            onClick={() => {
+              const element = document.getElementById(selectedBrand.sectionId);
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }}
+            className="text-white text-sm tracking-widest uppercase border-b border-white pb-1 hover:opacity-70 transition-opacity"
+          >
             Discover More
           </button>
         </div>
