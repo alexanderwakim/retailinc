@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const brandsData = [
   {
@@ -30,6 +30,19 @@ const brandsData = [
 
 export default function BrandsShowcase() {
   const [selectedBrand, setSelectedBrand] = useState(brandsData[0]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % brandsData.length;
+        setSelectedBrand(brandsData[nextIndex]);
+        return nextIndex;
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative min-h-screen bg-white">
@@ -64,10 +77,13 @@ export default function BrandsShowcase() {
       <div className="border-t border-gray-200">
         <div className="max-w-7xl mx-auto">
           <nav className="flex justify-center items-center overflow-x-auto">
-            {brandsData.map((brand) => (
+            {brandsData.map((brand, index) => (
               <button
                 key={brand.name}
-                onClick={() => setSelectedBrand(brand)}
+                onClick={() => {
+                  setSelectedBrand(brand);
+                  setCurrentIndex(index);
+                }}
                 className={`px-8 py-6 text-sm tracking-widest whitespace-nowrap transition-all ${
                   selectedBrand.name === brand.name
                     ? 'border-b-2 border-black text-black font-medium'
