@@ -1,7 +1,6 @@
 import Navigation from './components/Navigation';
 import BrandsShowcase from './components/BrandsShowcase';
 import Brands from './components/Brands';
-import ByTheNumbers from './components/ByTheNumbers';
 import OurStrengths from './components/OurStrengths';
 import About from './components/About';
 import Locations from './components/Locations';
@@ -13,7 +12,6 @@ function App() {
       <Navigation />
       <BrandsShowcase />
       <Brands />
-      <ByTheNumbers />
       <OurStrengths />
       <About />
       <Locations />
