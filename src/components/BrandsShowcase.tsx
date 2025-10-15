@@ -5,26 +5,31 @@ const brandsData = [
     name: 'Subdued',
     videoUrl: '/subdued.mp4',
     posterImage: '/pn0daficol1bb-1.jpg',
+    isYouTube: false,
   },
   {
     name: 'Parfois',
-    videoUrl: '/parfois.mp4',
+    videoUrl: 'https://www.youtube.com/embed/y0mhodH7A2k',
     posterImage: '/2_clothing copy copy.webp',
+    isYouTube: true,
   },
   {
     name: 'Jaune',
     videoUrl: '/jaune.mp4',
     posterImage: '/image copy copy copy copy copy copy copy copy copy copy.png',
+    isYouTube: false,
   },
   {
     name: 'OXXO',
     videoUrl: '/oxxo.mp4',
     posterImage: '/Gemini_Generated_Image_q8im0hq8im0hq8im.png',
+    isYouTube: false,
   },
   {
     name: 'Kusmi Tea',
     videoUrl: '/kusmi.mp4',
     posterImage: '/pexels-dickydikiw-34170576 copy.jpg',
+    isYouTube: false,
   },
 ];
 
@@ -47,17 +52,28 @@ export default function BrandsShowcase() {
   return (
     <section className="relative min-h-screen bg-white">
       <div className="relative w-full h-screen">
-        <video
-          key={selectedBrand.name}
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster={selectedBrand.posterImage}
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src={selectedBrand.videoUrl} type="video/mp4" />
-        </video>
+        {selectedBrand.isYouTube ? (
+          <iframe
+            key={selectedBrand.name}
+            src={`${selectedBrand.videoUrl}?autoplay=1&mute=1&loop=1&playlist=y0mhodH7A2k&controls=0&modestbranding=1&rel=0`}
+            className="absolute inset-0 w-full h-full object-cover"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            style={{ border: 'none', pointerEvents: 'none' }}
+          />
+        ) : (
+          <video
+            key={selectedBrand.name}
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster={selectedBrand.posterImage}
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={selectedBrand.videoUrl} type="video/mp4" />
+          </video>
+        )}
 
         <div className="absolute inset-0 bg-black/30"></div>
 
