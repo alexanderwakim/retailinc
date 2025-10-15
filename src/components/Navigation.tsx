@@ -16,8 +16,12 @@ export default function Navigation() {
     <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
-          <div className="text-lg md:text-2xl font-semibold tracking-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            RETAIL INC
+          <div className="h-8 md:h-10">
+            <img
+              src="/WhatsApp Image 2025-10-08 at 5.57.47 PM.jpeg"
+              alt="Retail Inc"
+              className="h-full w-auto object-contain"
+            />
           </div>
 
           <div className="hidden md:flex space-x-8">
