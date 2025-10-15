@@ -9,7 +9,7 @@ const brandsData = [
   },
   {
     name: 'Parfois',
-    videoUrl: '/parfoix.mp4',
+    videoUrl: '/YTDown.com_Shorts_Parfois-Special-Christmas_Media_y0mhodH7A2k_001_1080p.mp4',
     posterImage: '/2_clothing copy copy.webp',
     isYouTube: false,
   },
