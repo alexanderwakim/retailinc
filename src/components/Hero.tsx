@@ -10,13 +10,15 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-        style={{
-          backgroundImage: 'url(/Gemini_Generated_Image_lmlx9zlmlx9zlmlx%20copy.png)',
-          backgroundPosition: 'center center',
-        }}
-      />
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-60"
+      >
+        <source src="/subdued.mp4" type="video/mp4" />
+      </video>
 
       <div className="relative z-10 text-center text-gray-900 max-w-5xl px-6 mt-32">
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
