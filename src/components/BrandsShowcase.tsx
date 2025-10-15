@@ -39,7 +39,7 @@ export default function BrandsShowcase() {
         setSelectedBrand(brandsData[nextIndex]);
         return nextIndex;
       });
-    }, 3000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
