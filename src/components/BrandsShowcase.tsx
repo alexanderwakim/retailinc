@@ -41,27 +41,43 @@ const brandsData = [
 export default function BrandsShowcase() {
   const [selectedBrand, setSelectedBrand] = useState(brandsData[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => {
-        const nextIndex = (prevIndex + 1) % brandsData.length;
-        setSelectedBrand(brandsData[nextIndex]);
-        return nextIndex;
-      });
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => {
+          const nextIndex = (prevIndex + 1) % brandsData.length;
+          setSelectedBrand(brandsData[nextIndex]);
+          return nextIndex;
+        });
+        setTimeout(() => setIsTransitioning(false), 50);
+      }, 300);
     }, 4000);
 
     return () => clearInterval(interval);
   }, []);
 
+  const handleBrandClick = (brand: typeof brandsData[0], index: number) => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setSelectedBrand(brand);
+      setCurrentIndex(index);
+      setTimeout(() => setIsTransitioning(false), 50);
+    }, 300);
+  };
+
   return (
     <section className="relative min-h-screen bg-white">
-      <div className="relative w-full h-screen">
+      <div className="relative w-full h-screen overflow-hidden">
         {selectedBrand.isYouTube ? (
           <iframe
             key={selectedBrand.name}
             src={`${selectedBrand.videoUrl}?autoplay=1&mute=1&loop=1&playlist=y0mhodH7A2k&controls=0&modestbranding=1&rel=0`}
-            className="absolute inset-0 w-full h-full object-cover"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+              isTransitioning ? 'opacity-0' : 'opacity-100'
+            }`}
             allow="autoplay; encrypted-media"
             allowFullScreen
             style={{ border: 'none', pointerEvents: 'none' }}
@@ -73,7 +89,9 @@ export default function BrandsShowcase() {
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+              isTransitioning ? 'opacity-0' : 'opacity-100'
+            }`}
           >
             <source src={selectedBrand.videoUrl} type="video/mp4" />
           </video>
@@ -81,7 +99,11 @@ export default function BrandsShowcase() {
 
         <div className="absolute inset-0 bg-black/30"></div>
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <div
+          className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 ${
+            isTransitioning ? 'opacity-0' : 'opacity-100'
+          }`}
+        >
           <h2
             className="text-5xl md:text-7xl text-white font-light mb-4 tracking-wider"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
@@ -108,10 +130,7 @@ export default function BrandsShowcase() {
             {brandsData.map((brand, index) => (
               <button
                 key={brand.name}
-                onClick={() => {
-                  setSelectedBrand(brand);
-                  setCurrentIndex(index);
-                }}
+                onClick={() => handleBrandClick(brand, index)}
                 className={`px-8 py-6 text-sm tracking-widest whitespace-nowrap transition-all ${
                   selectedBrand.name === brand.name
                     ? 'border-b-2 border-black text-black font-medium'
