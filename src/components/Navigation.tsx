@@ -1,14 +1,32 @@
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+
+const brands = [
+  { name: 'Subdued', url: 'https://subdued.retail-inc.com', external: true },
+  { name: 'Parfois', section: 'locations', external: false },
+  { name: 'Jaune', section: 'locations', external: false },
+  { name: 'OXXO', section: 'locations', external: false },
+  { name: 'Kusmi Tea', section: 'locations', external: false },
+];
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isBrandsDropdownOpen, setIsBrandsDropdownOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsOpen(false);
+      setIsBrandsDropdownOpen(false);
+    }
+  };
+
+  const handleBrandClick = (brand: typeof brands[0]) => {
+    if (brand.external && brand.url) {
+      window.open(brand.url, '_blank', 'noopener,noreferrer');
+    } else if (brand.section) {
+      scrollToSection(brand.section);
     }
   };
 
@@ -24,13 +42,36 @@ export default function Navigation() {
             />
           </div>
 
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-8 items-center">
             <button onClick={() => scrollToSection('home')} className="text-sm tracking-wide hover:text-gray-600 transition-colors">
               HOME
             </button>
-            <button onClick={() => scrollToSection('brands')} className="text-sm tracking-wide hover:text-gray-600 transition-colors">
-              BRANDS
-            </button>
+            <div
+              className="relative"
+              onMouseEnter={() => setIsBrandsDropdownOpen(true)}
+              onMouseLeave={() => setIsBrandsDropdownOpen(false)}
+            >
+              <button
+                onClick={() => scrollToSection('brands')}
+                className="text-sm tracking-wide hover:text-gray-600 transition-colors flex items-center gap-1"
+              >
+                BRANDS
+                <ChevronDown size={16} className={`transition-transform ${isBrandsDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isBrandsDropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-lg border border-gray-100 rounded-sm py-2">
+                  {brands.map((brand) => (
+                    <button
+                      key={brand.name}
+                      onClick={() => handleBrandClick(brand)}
+                      className="block w-full text-left px-4 py-2 text-sm tracking-wide hover:bg-gray-50 transition-colors"
+                    >
+                      {brand.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <button onClick={() => scrollToSection('about')} className="text-sm tracking-wide hover:text-gray-600 transition-colors">
               ABOUT
             </button>
@@ -51,9 +92,28 @@ export default function Navigation() {
             <button onClick={() => scrollToSection('home')} className="block w-full text-left text-sm tracking-wide hover:text-gray-600 transition-colors">
               HOME
             </button>
-            <button onClick={() => scrollToSection('brands')} className="block w-full text-left text-sm tracking-wide hover:text-gray-600 transition-colors">
-              BRANDS
-            </button>
+            <div>
+              <button
+                onClick={() => setIsBrandsDropdownOpen(!isBrandsDropdownOpen)}
+                className="block w-full text-left text-sm tracking-wide hover:text-gray-600 transition-colors flex items-center justify-between"
+              >
+                BRANDS
+                <ChevronDown size={16} className={`transition-transform ${isBrandsDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isBrandsDropdownOpen && (
+                <div className="ml-4 mt-2 space-y-2">
+                  {brands.map((brand) => (
+                    <button
+                      key={brand.name}
+                      onClick={() => handleBrandClick(brand)}
+                      className="block w-full text-left text-sm tracking-wide text-gray-600 hover:text-gray-900 transition-colors"
+                    >
+                      {brand.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <button onClick={() => scrollToSection('about')} className="block w-full text-left text-sm tracking-wide hover:text-gray-600 transition-colors">
               ABOUT
             </button>
