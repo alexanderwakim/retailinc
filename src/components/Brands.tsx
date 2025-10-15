@@ -39,7 +39,6 @@ const brands = [
     image: '/Gemini_Generated_Image_q8im0hq8im0hq8im.png',
     link: '#',
     contacts: [
-      { location: 'ABC Achrafieh, L1', phone: '+961 01 200 326' },
       { location: 'Beirut City Centre, L0', phone: '+961 01 291 255' },
     ],
   },
