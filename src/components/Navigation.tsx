@@ -2,11 +2,11 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 
 const brands = [
-  { name: 'Subdued', url: 'https://subdued.retail-inc.com', external: true },
-  { name: 'Parfois', section: 'locations', external: false },
-  { name: 'Jaune', section: 'locations', external: false },
-  { name: 'OXXO', section: 'locations', external: false },
-  { name: 'Kusmi Tea', section: 'locations', external: false },
+  { name: 'Subdued', url: 'https://subdued.retail-inc.com', external: true, id: 'brand-subdued' },
+  { name: 'Parfois', id: 'brand-parfois', external: false },
+  { name: 'Jaune', id: 'brand-jaune', external: false },
+  { name: 'OXXO', id: 'brand-oxxo', external: false },
+  { name: 'Kusmi Tea', id: 'brand-kusmi-tea', external: false },
 ];
 
 export default function Navigation() {
@@ -25,8 +25,13 @@ export default function Navigation() {
   const handleBrandClick = (brand: typeof brands[0]) => {
     if (brand.external && brand.url) {
       window.open(brand.url, '_blank', 'noopener,noreferrer');
-    } else if (brand.section) {
-      scrollToSection(brand.section);
+    } else if (brand.id) {
+      const element = document.getElementById(brand.id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setIsOpen(false);
+        setIsBrandsDropdownOpen(false);
+      }
     }
   };
 
