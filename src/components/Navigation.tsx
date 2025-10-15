@@ -59,12 +59,12 @@ export default function Navigation() {
                 <ChevronDown size={16} className={`transition-transform ${isBrandsDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               {isBrandsDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-40 bg-white shadow-lg border border-gray-100 rounded-sm py-1">
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-lg border border-gray-100 rounded-sm py-2">
                   {brands.map((brand) => (
                     <button
                       key={brand.name}
                       onClick={() => handleBrandClick(brand)}
-                      className="block w-full text-left px-3 py-1.5 text-xs tracking-wide hover:bg-gray-50 transition-colors"
+                      className="block w-full text-left px-4 py-2 text-sm tracking-wide hover:bg-gray-50 transition-colors"
                     >
                       {brand.name}
                     </button>
