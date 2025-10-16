@@ -36,11 +36,8 @@ export default function About() {
           <p className="text-lg leading-relaxed text-gray-700 mb-6">
             Founded in 2012, Retail Inc was built on a mission to introduce premium global brands to the Lebanese market. Grounded in a franchise-based model and prime mall locations, we quickly emerged as a benchmark of retail excellence.
           </p>
-          <p className="text-lg leading-relaxed text-gray-700 mb-6">
-            In 2022, Karlson Holding acquired full ownership to scale operations and expand our market footprint — strengthening our capabilities across logistics, IT, marketing, and brand onboarding.
-          </p>
           <p className="text-lg leading-relaxed text-gray-700">
-            Today, Retail Inc stands as a prominent player with a robust network of experts, partners, and internationally trusted brands.
+            In 2022, Karlson Holding acquired full ownership to scale operations and expand our market footprint — strengthening our capabilities across logistics, IT, marketing, and brand onboarding.
           </p>
         </div>
 
