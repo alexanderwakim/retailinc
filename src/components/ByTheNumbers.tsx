@@ -28,7 +28,7 @@ export default function ByTheNumbers() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gradient-to-br from-[#D5E3EA] to-white">
+    <section ref={sectionRef} className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <h2
           className="text-4xl md:text-5xl font-semibold text-center mb-16 tracking-tight"
