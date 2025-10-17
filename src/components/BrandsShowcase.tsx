@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const brandsData = [
   {
@@ -41,20 +41,15 @@ const brandsData = [
 export default function BrandsShowcase() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [nextIndex, setNextIndex] = useState<number | null>(null);
-  const [loadedVideos, setLoadedVideos] = useState<Set<number>>(new Set([0]));
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   useEffect(() => {
-    brandsData.forEach((brand, index) => {
-      if (!brand.isYouTube && index !== 0) {
-        const video = document.createElement('video');
-        video.src = brand.videoUrl;
-        video.preload = 'auto';
-        video.onloadeddata = () => {
-          setLoadedVideos(prev => new Set([...prev, index]));
-        };
+    videoRefs.current.forEach((video, index) => {
+      if (video && index !== currentIndex) {
+        video.load();
       }
     });
-  }, []);
+  }, [currentIndex]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -78,7 +73,7 @@ export default function BrandsShowcase() {
     }, 300);
   };
 
-  const renderVideo = (brand: typeof brandsData[0], isNext: boolean) => {
+  const renderVideo = (brand: typeof brandsData[0], index: number, isNext: boolean) => {
     const baseClasses = "absolute inset-0 transition-opacity duration-300";
     const opacityClass = isNext ? "opacity-100" : "opacity-0";
 
@@ -92,6 +87,7 @@ export default function BrandsShowcase() {
       />
     ) : (
       <video
+        ref={(el) => (videoRefs.current[index] = el)}
         autoPlay
         loop
         muted
@@ -120,7 +116,7 @@ export default function BrandsShowcase() {
               'opacity-0 z-0'
             }`}
           >
-            {renderVideo(brand, index === nextIndex || (index === currentIndex && nextIndex === null))}
+            {renderVideo(brand, index, index === nextIndex || (index === currentIndex && nextIndex === null))}
           </div>
         ))}
 
