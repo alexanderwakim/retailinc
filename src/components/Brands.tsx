@@ -25,7 +25,7 @@ const brands = [
   {
     name: 'Jaune',
     description: 'Lebanese menswear brand blending active, casual, and formal styles with Mediterranean flair.',
-    image: '/image copy copy copy copy copy copy copy copy copy copy.png',
+    image: '/Jaune 61.jpg',
     link: 'https://jaune.retail-inc.com',
     id: 'brand-jaune',
     contacts: [
