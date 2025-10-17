@@ -1,4 +1,5 @@
 import { ExternalLink, Phone } from 'lucide-react';
+import { useState } from 'react';
 
 const brands = [
   {
@@ -59,6 +60,20 @@ const brands = [
 ];
 
 export default function Brands() {
+  const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
+
+  const toggleCard = (index: number) => {
+    setFlippedCards(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
+
   return (
     <section id="brands" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -77,11 +92,11 @@ export default function Brands() {
             <div
               key={index}
               id={brand.id}
-              className={`relative bg-white overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 ${brand.name === 'Subdued' ? 'cursor-pointer group' : 'group'}`}
+              className={`relative bg-white overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 ${brand.name === 'Subdued' ? 'cursor-pointer' : 'cursor-pointer'}`}
               style={{ perspective: '1000px', minHeight: '540px' }}
-              onClick={brand.name === 'Subdued' ? () => window.open(brand.link, '_blank') : undefined}
+              onClick={brand.name === 'Subdued' ? () => window.open(brand.link, '_blank') : () => toggleCard(index)}
             >
-              <div className={`absolute inset-0 w-full h-full transition-transform duration-700 ${brand.name === 'Subdued' ? '' : 'group-hover:[transform:rotateY(180deg)]'}`} style={{ transformStyle: 'preserve-3d' }}>
+              <div className={`absolute inset-0 w-full h-full transition-transform duration-700 ${brand.name === 'Subdued' ? '' : flippedCards.has(index) ? '[transform:rotateY(180deg)]' : ''}`} style={{ transformStyle: 'preserve-3d' }}>
                 <div className="absolute inset-0 w-full h-full bg-white" style={{ backfaceVisibility: 'hidden' }}>
                   <div className="relative h-80 overflow-hidden">
                     <img
@@ -184,10 +199,11 @@ export default function Brands() {
             <div
               key={index + 3}
               id={brand.id}
-              className="group relative bg-white overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
+              className="relative bg-white overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
               style={{ perspective: '1000px', minHeight: '540px' }}
+              onClick={() => toggleCard(index + 3)}
             >
-              <div className="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:[transform:rotateY(180deg)]" style={{ transformStyle: 'preserve-3d' }}>
+              <div className={`absolute inset-0 w-full h-full transition-transform duration-700 ${flippedCards.has(index + 3) ? '[transform:rotateY(180deg)]' : ''}`} style={{ transformStyle: 'preserve-3d' }}>
                 <div className="absolute inset-0 w-full h-full bg-white" style={{ backfaceVisibility: 'hidden' }}>
                   <div className="relative h-80 overflow-hidden">
                     <img
