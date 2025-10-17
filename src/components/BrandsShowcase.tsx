@@ -94,7 +94,7 @@ export default function BrandsShowcase() {
 
   return (
     <section className="relative min-h-screen bg-white">
-      <div className="relative w-full h-screen overflow-hidden">
+      <div className="relative w-full h-[60vh] md:h-screen overflow-hidden">
         <div key={`current-${currentIndex}`} className="absolute inset-0">
           {renderVideo(currentBrand, nextIndex === null)}
         </div>
