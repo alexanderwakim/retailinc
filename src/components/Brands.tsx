@@ -78,14 +78,11 @@ export default function Brands() {
     <section id="brands" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <h2
-          className="text-4xl md:text-5xl font-semibold text-center mb-6 tracking-tight"
+          className="text-4xl md:text-5xl font-semibold text-center mb-16 tracking-tight"
           style={{ fontFamily: 'Montserrat, sans-serif' }}
         >
           Our Brands
         </h2>
-        <p className="text-center text-gray-700 mb-16 max-w-2xl mx-auto leading-relaxed">
-          We represent a curated portfolio of internationally recognized fashion and lifestyle brands, each bringing unique value to the Lebanese market.
-        </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
           {brands.slice(0, 3).map((brand, index) => (
