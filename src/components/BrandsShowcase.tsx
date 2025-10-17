@@ -31,7 +31,7 @@ const brandsData = [
   },
   {
     name: 'Kusmi Tea',
-    videoUrl: '/kusmi tea video.mp4',
+    videoUrl: '/kusmi-tea-whatsapp.mp4',
     posterImage: '/pexels-dickydikiw-34170576 copy.jpg',
     isYouTube: false,
     sectionId: 'brand-kusmi-tea',
