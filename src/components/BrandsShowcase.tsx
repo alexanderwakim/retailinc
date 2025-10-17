@@ -2,13 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 
 const brandsData = [
   {
-    name: 'Subdued',
-    videoUrl: '/parfois-whatsapp.mp4',
-    posterImage: '/pn0daficol1bb-1.jpg',
-    isYouTube: false,
-    sectionId: 'brand-subdued',
-  },
-  {
     name: 'Parfois',
     videoUrl: '/parfois-whatsapp.mp4',
     posterImage: '/2_clothing copy copy.webp',
