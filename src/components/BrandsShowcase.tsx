@@ -41,7 +41,12 @@ const brandsData = [
 export default function BrandsShowcase() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [nextIndex, setNextIndex] = useState<number | null>(null);
+  const [isReady, setIsReady] = useState(false);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  useEffect(() => {
+    setIsReady(true);
+  }, []);
 
   useEffect(() => {
     videoRefs.current.forEach((video, index) => {
@@ -52,6 +57,8 @@ export default function BrandsShowcase() {
   }, [currentIndex]);
 
   useEffect(() => {
+    if (!isReady) return;
+
     const interval = setInterval(() => {
       const next = (currentIndex + 1) % brandsData.length;
       setNextIndex(next);
@@ -62,7 +69,7 @@ export default function BrandsShowcase() {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, isReady]);
 
   const handleBrandClick = (index: number) => {
     if (index === currentIndex) return;
