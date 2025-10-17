@@ -39,7 +39,7 @@ const brands = [
   {
     name: 'OXXO',
     description: 'Turkish womenswear brand offering bold everyday fashion for the modern, confident woman.',
-    image: '/Gemini_Generated_Image_q8im0hq8im0hq8im.png',
+    image: '/oxxo image.jpg',
     link: '#',
     id: 'brand-oxxo',
     contacts: [
