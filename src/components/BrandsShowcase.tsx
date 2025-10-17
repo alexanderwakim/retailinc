@@ -49,7 +49,7 @@ export default function BrandsShowcase() {
       setTimeout(() => {
         setCurrentIndex(next);
         setNextIndex(null);
-      }, 600);
+      }, 300);
     }, 4000);
 
     return () => clearInterval(interval);
@@ -61,11 +61,11 @@ export default function BrandsShowcase() {
     setTimeout(() => {
       setCurrentIndex(index);
       setNextIndex(null);
-    }, 600);
+    }, 300);
   };
 
   const renderVideo = (brand: typeof brandsData[0], isNext: boolean) => {
-    const baseClasses = "absolute inset-0 w-full h-full object-cover transition-opacity duration-600";
+    const baseClasses = "absolute inset-0 w-full h-full object-cover transition-opacity duration-300";
     const opacityClass = isNext ? "opacity-100" : "opacity-0";
 
     return brand.isYouTube ? (
@@ -108,7 +108,7 @@ export default function BrandsShowcase() {
         <div className="absolute inset-0 bg-black/30"></div>
 
         <div
-          className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-600 ${
+          className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 ${
             nextIndex !== null ? 'opacity-0' : 'opacity-100'
           }`}
         >
