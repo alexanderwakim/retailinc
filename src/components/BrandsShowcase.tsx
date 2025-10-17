@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 const brandsData = [
   {
     name: 'Subdued',
-    videoUrl: '/subdued video faster.mp4',
+    videoUrl: '/parfois-whatsapp.mp4',
     posterImage: '/pn0daficol1bb-1.jpg',
     isYouTube: false,
     sectionId: 'brand-subdued',
