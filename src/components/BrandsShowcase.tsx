@@ -74,7 +74,7 @@ export default function BrandsShowcase() {
         className={`${baseClasses} ${opacityClass}`}
         allow="autoplay; encrypted-media"
         allowFullScreen
-        style={{ border: 'none', pointerEvents: 'none', width: '100%', height: '80vh', objectFit: 'cover', objectPosition: 'center' }}
+        style={{ border: 'none', pointerEvents: 'none', width: '100vw', height: '80vh', objectFit: 'cover', objectPosition: 'center' }}
       />
     ) : (
       <video
@@ -83,7 +83,7 @@ export default function BrandsShowcase() {
         muted
         playsInline
         className={`${baseClasses} ${opacityClass}`}
-        style={{ width: '100%', height: '80vh', objectFit: 'cover', objectPosition: 'center' }}
+        style={{ width: '100vw', height: '80vh', objectFit: 'cover', objectPosition: 'center' }}
       >
         <source src={brand.videoUrl} type="video/mp4" />
       </video>
@@ -94,8 +94,8 @@ export default function BrandsShowcase() {
   const nextBrand = nextIndex !== null ? brandsData[nextIndex] : null;
 
   return (
-    <section className="relative min-h-screen bg-white">
-      <div className="relative w-full h-[80vh] overflow-hidden">
+    <section className="relative min-h-screen bg-white -mx-0 px-0">
+      <div className="relative w-screen h-[80vh] overflow-hidden left-1/2 right-1/2 -mx-[50vw]">
         <div key={`current-${currentIndex}`} className="absolute inset-0">
           {renderVideo(currentBrand, nextIndex === null)}
         </div>
