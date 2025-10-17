@@ -6,6 +6,7 @@ const brandsData = [
     videoUrl: '/subdued video faster.mp4',
     posterImage: '/pn0daficol1bb-1.jpg',
     isYouTube: false,
+    isImage: false,
     sectionId: 'brand-subdued',
   },
   {
@@ -13,6 +14,7 @@ const brandsData = [
     videoUrl: '/parfois short.mp4',
     posterImage: '/2_clothing copy copy.webp',
     isYouTube: false,
+    isImage: false,
     sectionId: 'brand-parfois',
   },
   {
@@ -20,13 +22,15 @@ const brandsData = [
     videoUrl: '/jaune.mp4',
     posterImage: '/image copy copy copy copy copy copy copy copy copy copy.png',
     isYouTube: false,
+    isImage: false,
     sectionId: 'brand-jaune',
   },
   {
     name: 'OXXO',
-    videoUrl: '/oxxo video.mp4',
-    posterImage: '/Gemini_Generated_Image_q8im0hq8im0hq8im.png',
+    videoUrl: '/oxxo image.jpg',
+    posterImage: '/oxxo image.jpg',
     isYouTube: false,
+    isImage: true,
     sectionId: 'brand-oxxo',
   },
   {
@@ -34,6 +38,7 @@ const brandsData = [
     videoUrl: '/kusmi tea video.mp4',
     posterImage: '/pexels-dickydikiw-34170576 copy.jpg',
     isYouTube: false,
+    isImage: false,
     sectionId: 'brand-kusmi-tea',
   },
 ];
@@ -45,7 +50,7 @@ export default function BrandsShowcase() {
 
   useEffect(() => {
     brandsData.forEach((brand, index) => {
-      if (!brand.isYouTube && index !== 0) {
+      if (!brand.isYouTube && !brand.isImage && index !== 0) {
         const video = document.createElement('video');
         video.src = brand.videoUrl;
         video.preload = 'auto';
@@ -81,6 +86,17 @@ export default function BrandsShowcase() {
   const renderVideo = (brand: typeof brandsData[0], isNext: boolean) => {
     const baseClasses = "absolute inset-0 transition-opacity duration-300";
     const opacityClass = isNext ? "opacity-100" : "opacity-0";
+
+    if (brand.isImage) {
+      return (
+        <img
+          src={brand.videoUrl}
+          alt={brand.name}
+          className={`${baseClasses} ${opacityClass}`}
+          style={{ width: '100vw', height: '80vh', objectFit: 'cover', objectPosition: 'center' }}
+        />
+      );
+    }
 
     return brand.isYouTube ? (
       <iframe
