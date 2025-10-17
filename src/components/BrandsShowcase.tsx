@@ -10,7 +10,7 @@ const brandsData = [
   },
   {
     name: 'Parfois',
-    videoUrl: '/parfois new video.mp4',
+    videoUrl: '/parfois-whatsapp.mp4',
     posterImage: '/2_clothing copy copy.webp',
     isYouTube: false,
     sectionId: 'brand-parfois',
