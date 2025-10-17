@@ -75,10 +75,10 @@ export default function Brands() {
   };
 
   return (
-    <section id="brands" className="py-12 bg-white">
+    <section id="brands" className="py-6 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <h2
-          className="text-4xl md:text-5xl font-semibold text-center mb-8 tracking-tight"
+          className="text-4xl md:text-5xl font-semibold text-center mb-4 tracking-tight"
           style={{ fontFamily: 'Montserrat, sans-serif' }}
         >
           Our Brands
