@@ -4,7 +4,7 @@ const brands = [
   {
     name: 'Subdued',
     description: 'Gen Z-focused Italian fashion brand delivering contemporary streetwear and bold statement pieces.',
-    image: '/pn0daficol1bb-1.jpg',
+    image: '/WhatsApp Image 2025-10-13 at 8.58.55 PM (1).jpeg',
     link: 'https://subdued.retail-inc.com',
     id: 'brand-subdued',
   },
