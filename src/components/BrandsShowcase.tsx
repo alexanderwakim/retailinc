@@ -24,7 +24,7 @@ const brandsData = [
   },
   {
     name: 'OXXO',
-    videoUrl: '/oxxo video.mp4',
+    videoUrl: '/oxxo-whatsapp.mp4',
     posterImage: '/Gemini_Generated_Image_q8im0hq8im0hq8im.png',
     isYouTube: false,
     sectionId: 'brand-oxxo',
