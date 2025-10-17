@@ -87,7 +87,7 @@ export default function Brands() {
                     <img
                       src={brand.image}
                       alt={brand.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
                     />
                     {brand.name === 'Subdued' && (
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
@@ -193,7 +193,7 @@ export default function Brands() {
                     <img
                       src={brand.image}
                       alt={brand.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
                     />
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 pb-8 flex flex-col items-center">
