@@ -135,9 +135,13 @@ export default function BrandsShowcase() {
           </h2>
           <button
             onClick={() => {
-              const element = document.getElementById(currentBrand.sectionId);
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              if (currentBrand.name === 'Subdued') {
+                window.open('https://subdued.retail-inc.com', '_blank');
+              } else {
+                const element = document.getElementById(currentBrand.sectionId);
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
               }
             }}
             className="text-white text-sm tracking-widest uppercase border-b border-white pb-1 hover:opacity-70 transition-opacity"
