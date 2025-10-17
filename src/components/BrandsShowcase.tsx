@@ -65,7 +65,7 @@ export default function BrandsShowcase() {
   };
 
   const renderVideo = (brand: typeof brandsData[0], isNext: boolean) => {
-    const baseClasses = "absolute inset-0 w-full h-full object-cover transition-opacity duration-300";
+    const baseClasses = "absolute inset-0 transition-opacity duration-300";
     const opacityClass = isNext ? "opacity-100" : "opacity-0";
 
     return brand.isYouTube ? (
@@ -74,7 +74,7 @@ export default function BrandsShowcase() {
         className={`${baseClasses} ${opacityClass}`}
         allow="autoplay; encrypted-media"
         allowFullScreen
-        style={{ border: 'none', pointerEvents: 'none' }}
+        style={{ border: 'none', pointerEvents: 'none', width: '100%', height: '80vh', objectFit: 'cover', objectPosition: 'center' }}
       />
     ) : (
       <video
@@ -83,6 +83,7 @@ export default function BrandsShowcase() {
         muted
         playsInline
         className={`${baseClasses} ${opacityClass}`}
+        style={{ width: '100%', height: '80vh', objectFit: 'cover', objectPosition: 'center' }}
       >
         <source src={brand.videoUrl} type="video/mp4" />
       </video>

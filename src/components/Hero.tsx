@@ -8,7 +8,8 @@ export default function Hero() {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0"
+        style={{ width: '100%', height: '80vh', objectFit: 'cover', objectPosition: 'center' }}
       >
         <source src="/subdued.mp4" type="video/mp4" />
       </video>
