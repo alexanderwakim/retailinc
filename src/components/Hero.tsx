@@ -2,13 +2,14 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative h-[60vh] md:h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
       <video
         autoPlay
         loop
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
+        style={{ objectFit: 'cover' }}
       >
         <source src="/subdued.mp4" type="video/mp4" />
       </video>
