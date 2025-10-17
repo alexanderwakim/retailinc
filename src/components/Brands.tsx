@@ -30,11 +30,11 @@ const brands = [
     link: 'https://jaune.retail-inc.com',
     id: 'brand-jaune',
     contacts: [
-      { location: 'ABC Achrafieh', phone: '+961 81 227 100' },
-      { location: 'ABC Dbayeh', phone: '+961 81 227 100' },
-      { location: 'City Mall', phone: '+961 81 227 100' },
-      { location: 'Beirut City Centre', phone: '+961 81 227 100' },
-      { location: 'Tripoli Square', phone: '+961 81 227 100' },
+      { location: 'ABC Achrafieh', phone: '+961 1 211 121' },
+      { location: 'ABC Dbayeh', phone: '+961 4 419 966' },
+      { location: 'City Mall', phone: '+961 1 880 988' },
+      { location: 'Beirut City Centre', phone: '+961 1 291 252' },
+      { location: 'Tripoli Square', phone: '+961 6 409 556' },
     ],
   },
   {
