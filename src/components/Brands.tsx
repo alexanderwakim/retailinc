@@ -12,7 +12,7 @@ const brands = [
   {
     name: 'Parfois',
     description: 'Affordable European accessories label for fashion-forward women seeking timeless elegance.',
-    image: '/2_clothing copy copy.webp',
+    image: '/parfois image 2.0.webp',
     link: 'https://parfois.retail-inc.com',
     id: 'brand-parfois',
     contacts: [
