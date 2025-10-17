@@ -49,12 +49,12 @@ export default function BrandsShowcase() {
   }, []);
 
   useEffect(() => {
-    videoRefs.current.forEach((video, index) => {
-      if (video && index !== currentIndex) {
+    videoRefs.current.forEach((video) => {
+      if (video) {
         video.load();
       }
     });
-  }, [currentIndex]);
+  }, []);
 
   useEffect(() => {
     if (!isReady) return;
@@ -65,7 +65,7 @@ export default function BrandsShowcase() {
       setTimeout(() => {
         setCurrentIndex(next);
         setNextIndex(null);
-      }, 300);
+      }, 500);
     }, 4000);
 
     return () => clearInterval(interval);
@@ -77,17 +77,14 @@ export default function BrandsShowcase() {
     setTimeout(() => {
       setCurrentIndex(index);
       setNextIndex(null);
-    }, 300);
+    }, 500);
   };
 
-  const renderVideo = (brand: typeof brandsData[0], index: number, isNext: boolean) => {
-    const baseClasses = "absolute inset-0 transition-opacity duration-300";
-    const opacityClass = isNext ? "opacity-100" : "opacity-0";
-
+  const renderVideo = (brand: typeof brandsData[0], index: number) => {
     return brand.isYouTube ? (
       <iframe
         src={`${brand.videoUrl}?autoplay=1&mute=1&loop=1&playlist=y0mhodH7A2k&controls=0&modestbranding=1&rel=0`}
-        className={`${baseClasses} ${opacityClass}`}
+        className="absolute inset-0 w-full h-full"
         allow="autoplay; encrypted-media"
         allowFullScreen
         style={{ border: 'none', pointerEvents: 'none', width: '100vw', height: '80vh', objectFit: 'cover', objectPosition: 'center' }}
@@ -100,7 +97,7 @@ export default function BrandsShowcase() {
         muted
         playsInline
         preload="auto"
-        className={`${baseClasses} ${opacityClass}`}
+        className="absolute inset-0 w-full h-full"
         style={{ width: '100vw', height: '80vh', objectFit: 'cover', objectPosition: 'center' }}
       >
         <source src={brand.videoUrl} type="video/mp4" />
@@ -117,13 +114,13 @@ export default function BrandsShowcase() {
         {brandsData.map((brand, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-300 ${
+            className={`absolute inset-0 transition-opacity duration-500 ${
               index === currentIndex && nextIndex === null ? 'opacity-100 z-10' :
               index === nextIndex ? 'opacity-100 z-20' :
               'opacity-0 z-0'
             }`}
           >
-            {renderVideo(brand, index, index === nextIndex || (index === currentIndex && nextIndex === null))}
+            {renderVideo(brand, index)}
           </div>
         ))}
 
