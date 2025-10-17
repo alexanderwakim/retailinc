@@ -65,7 +65,7 @@ export default function BrandsShowcase() {
   };
 
   const renderVideo = (brand: typeof brandsData[0], isNext: boolean) => {
-    const baseClasses = "absolute inset-0 w-full h-full object-cover transition-opacity duration-300";
+    const baseClasses = "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full w-auto min-w-full transition-opacity duration-300";
     const opacityClass = isNext ? "opacity-100" : "opacity-0";
 
     return brand.isYouTube ? (
