@@ -41,6 +41,20 @@ const brandsData = [
 export default function BrandsShowcase() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [nextIndex, setNextIndex] = useState<number | null>(null);
+  const [loadedVideos, setLoadedVideos] = useState<Set<number>>(new Set([0]));
+
+  useEffect(() => {
+    brandsData.forEach((brand, index) => {
+      if (!brand.isYouTube && index !== 0) {
+        const video = document.createElement('video');
+        video.src = brand.videoUrl;
+        video.preload = 'auto';
+        video.onloadeddata = () => {
+          setLoadedVideos(prev => new Set([...prev, index]));
+        };
+      }
+    });
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -82,6 +96,7 @@ export default function BrandsShowcase() {
         loop
         muted
         playsInline
+        preload="auto"
         className={`${baseClasses} ${opacityClass}`}
         style={{ width: '100vw', height: '80vh', objectFit: 'cover', objectPosition: 'center' }}
       >
@@ -95,21 +110,24 @@ export default function BrandsShowcase() {
 
   return (
     <section className="relative min-h-screen bg-white -mx-0 px-0">
-      <div className="relative w-screen h-[80vh] overflow-hidden left-1/2 right-1/2 -mx-[50vw]">
-        <div key={`current-${currentIndex}`} className="absolute inset-0">
-          {renderVideo(currentBrand, nextIndex === null)}
-        </div>
-
-        {nextBrand && (
-          <div key={`next-${nextIndex}`} className="absolute inset-0">
-            {renderVideo(nextBrand, true)}
+      <div className="relative w-screen h-[80vh] overflow-hidden left-1/2 right-1/2 -mx-[50vw] bg-black">
+        {brandsData.map((brand, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-300 ${
+              index === currentIndex && nextIndex === null ? 'opacity-100 z-10' :
+              index === nextIndex ? 'opacity-100 z-20' :
+              'opacity-0 z-0'
+            }`}
+          >
+            {renderVideo(brand, index === nextIndex || (index === currentIndex && nextIndex === null))}
           </div>
-        )}
+        ))}
 
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-black/30 z-30"></div>
 
         <div
-          className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 ${
+          className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 z-40 ${
             nextIndex !== null ? 'opacity-0' : 'opacity-100'
           }`}
         >
