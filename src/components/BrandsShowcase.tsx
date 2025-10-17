@@ -132,17 +132,17 @@ export default function BrandsShowcase() {
         </div>
       </div>
 
-      <div className="border-t border-gray-200">
+      <div className="border-t border-gray-300 bg-white">
         <div className="max-w-7xl mx-auto">
           <nav className="flex justify-center items-center overflow-x-auto">
             {brandsData.map((brand, index) => (
               <button
                 key={brand.name}
                 onClick={() => handleBrandClick(index)}
-                className={`px-8 py-6 text-sm tracking-widest whitespace-nowrap transition-all ${
+                className={`px-8 py-6 text-sm tracking-widest whitespace-nowrap transition-all uppercase ${
                   currentIndex === index
-                    ? 'border-b-2 border-black text-black font-medium'
-                    : 'text-gray-400 hover:text-gray-700'
+                    ? 'border-b-2 border-black text-black font-semibold'
+                    : 'text-gray-600 hover:text-black'
                 }`}
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
