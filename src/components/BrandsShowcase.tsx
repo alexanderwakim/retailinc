@@ -17,7 +17,7 @@ const brandsData = [
   },
   {
     name: 'Jaune',
-    videoUrl: '/jaune.mp4',
+    videoUrl: '/jaune-without-logo.mp4',
     posterImage: '/image copy copy copy copy copy copy copy copy copy copy.png',
     isYouTube: false,
     sectionId: 'brand-jaune',
