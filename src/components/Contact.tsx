@@ -1,4 +1,18 @@
 import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+
+const countryCodes = [
+  { code: '+961', country: 'Lebanon', flag: '🇱🇧' },
+  { code: '+1', country: 'USA/Canada', flag: '🇺🇸' },
+  { code: '+44', country: 'UK', flag: '🇬🇧' },
+  { code: '+971', country: 'UAE', flag: '🇦🇪' },
+  { code: '+966', country: 'Saudi Arabia', flag: '🇸🇦' },
+  { code: '+33', country: 'France', flag: '🇫🇷' },
+  { code: '+49', country: 'Germany', flag: '🇩🇪' },
+  { code: '+90', country: 'Turkey', flag: '🇹🇷' },
+  { code: '+20', country: 'Egypt', flag: '🇪🇬' },
+  { code: '+962', country: 'Jordan', flag: '🇯🇴' },
+];
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -7,6 +21,8 @@ export default function Contact() {
     email: '',
     message: '',
   });
+  const [countryCode, setCountryCode] = useState(countryCodes[0]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -24,7 +40,10 @@ export default function Contact() {
             'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({
+            ...formData,
+            phoneNumber: `${countryCode.code} ${formData.phoneNumber}`,
+          }),
         }
       );
 
@@ -36,6 +55,7 @@ export default function Contact() {
           email: '',
           message: '',
         });
+        setCountryCode(countryCodes[0]);
       } else {
         setSubmitStatus('error');
       }
@@ -81,11 +101,37 @@ export default function Contact() {
               <label htmlFor="phoneNumber" className="block text-gray-900 font-medium mb-3">
                 Your Phone Number*
               </label>
-              <div className="flex">
-                <div className="flex items-center px-3 py-3 border border-r-0 border-gray-300 bg-gray-50">
-                  <span className="text-2xl mr-2">🇱🇧</span>
-                  <span className="text-gray-700">+961</span>
-                </div>
+              <div className="flex relative">
+                <button
+                  type="button"
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="flex items-center px-3 py-3 border border-r-0 border-gray-300 bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer"
+                >
+                  <span className="text-2xl mr-2">{countryCode.flag}</span>
+                  <span className="text-gray-700 mr-1">{countryCode.code}</span>
+                  <ChevronDown className="w-4 h-4 text-gray-600" />
+                </button>
+
+                {isDropdownOpen && (
+                  <div className="absolute top-full left-0 mt-1 w-64 bg-white border border-gray-300 shadow-lg z-50 max-h-60 overflow-y-auto">
+                    {countryCodes.map((country) => (
+                      <button
+                        key={country.code}
+                        type="button"
+                        onClick={() => {
+                          setCountryCode(country);
+                          setIsDropdownOpen(false);
+                        }}
+                        className="w-full flex items-center px-4 py-2 hover:bg-gray-100 transition-colors text-left"
+                      >
+                        <span className="text-2xl mr-3">{country.flag}</span>
+                        <span className="text-gray-700 font-medium mr-2">{country.code}</span>
+                        <span className="text-gray-500 text-sm">{country.country}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+
                 <input
                   type="tel"
                   id="phoneNumber"
