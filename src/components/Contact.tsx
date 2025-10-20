@@ -35,21 +35,18 @@ export default function Contact() {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-      const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-contact-email`,
-        {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            ...formData,
-            phoneNumber: `${countryCode.code} ${formData.phoneNumber}`,
-          }),
-          signal: controller.signal,
-        }
-      );
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          phoneNumber: `${countryCode.code} ${formData.phoneNumber}`,
+        }),
+        signal: controller.signal,
+      });
 
       clearTimeout(timeoutId);
 
