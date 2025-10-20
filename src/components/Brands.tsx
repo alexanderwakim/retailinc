@@ -162,7 +162,7 @@ export default function Brands() {
                             Contact {brand.name}
                           </h3>
                         </div>
-                        <ul className="space-y-3 text-black text-center w-full max-h-80 overflow-y-auto">
+                        <ul className="space-y-3 text-black text-center w-full max-h-80 overflow-y-auto mb-6">
                           {brand.contacts.map((contact, idx) => (
                             <li key={idx} className="flex flex-col">
                               <span className="font-semibold text-sm">{contact.location}</span>
@@ -170,6 +170,18 @@ export default function Brands() {
                             </li>
                           ))}
                         </ul>
+                        {brand.name === 'Jaune' && (
+                          <a
+                            href="https://www.jaune.me/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-black text-white px-8 py-3 text-sm tracking-wide font-medium hover:bg-gray-800 transition-colors inline-flex items-center gap-2"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            VISIT WEBSITE
+                            <ExternalLink size={16} />
+                          </a>
+                        )}
                       </>
                     ) : (
                       <>
