@@ -8,8 +8,10 @@ export default function Hero() {
         loop
         muted
         playsInline
+        preload="auto"
+        poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect fill='%23000000' width='1920' height='1080'/%3E%3C/svg%3E"
         className="absolute inset-0"
-        style={{ width: '100%', height: '80vh', objectFit: 'cover', objectPosition: 'center' }}
+        style={{ width: '100%', height: '80vh', objectFit: 'cover', objectPosition: 'center', backgroundColor: '#000' }}
       >
         <source src="/subdued.mp4" type="video/mp4" />
       </video>
