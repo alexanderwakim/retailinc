@@ -8,6 +8,8 @@ export default function Hero() {
         loop
         muted
         playsInline
+        preload="auto"
+        poster="/pexels-pixabay-54581.jpg"
         className="absolute inset-0"
         style={{ width: '100%', height: '80vh', objectFit: 'cover', objectPosition: 'center' }}
       >

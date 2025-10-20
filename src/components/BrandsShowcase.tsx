@@ -4,35 +4,35 @@ const brandsData = [
   {
     name: 'Subdued',
     videoUrl: '/subdued.mp4',
-    posterImage: '/pn0daficol1bb-1.jpg',
+    posterImage: '/pexels-pixabay-54581.jpg',
     isYouTube: false,
     sectionId: 'brand-subdued',
   },
   {
     name: 'Parfois',
     videoUrl: '/parfois new video.mp4',
-    posterImage: '/2_clothing copy copy.webp',
+    posterImage: '/parfois image 2.0.webp',
     isYouTube: false,
     sectionId: 'brand-parfois',
   },
   {
     name: 'Jaune',
     videoUrl: '/jaune-without-logo.mp4',
-    posterImage: '/image copy copy copy copy copy copy copy copy copy copy.png',
+    posterImage: '/Jaune 61.jpg',
     isYouTube: false,
     sectionId: 'brand-jaune',
   },
   {
     name: 'OXXO',
     videoUrl: '/oxxo-whatsapp.mp4',
-    posterImage: '/Gemini_Generated_Image_q8im0hq8im0hq8im.png',
+    posterImage: '/oxxo image.jpg',
     isYouTube: false,
     sectionId: 'brand-oxxo',
   },
   {
     name: 'Kusmi Tea',
     videoUrl: '/kusmi-tea-whatsapp.mp4',
-    posterImage: '/pexels-dickydikiw-34170576 copy.jpg',
+    posterImage: '/pexels-dickydikiw-34170576.jpg',
     isYouTube: false,
     sectionId: 'brand-kusmi-tea',
   },
@@ -97,6 +97,7 @@ export default function BrandsShowcase() {
         muted
         playsInline
         preload="auto"
+        poster={brand.posterImage}
         className="absolute inset-0 w-full h-full"
         style={{ width: '100vw', height: '80vh', objectFit: 'cover', objectPosition: 'center' }}
       >
