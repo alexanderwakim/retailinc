@@ -1,4 +1,5 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { createClient } from "npm:@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -24,52 +25,23 @@ Deno.serve(async (req: Request) => {
   try {
     const formData: ContactFormData = await req.json();
 
-    const emailBody = `
-New Contact Form Submission
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const supabaseKey = Deno.env.get('SUPABASE_ANON_KEY')!;
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
-From: ${formData.fullName}
-Email: ${formData.email}
-Phone: +961 ${formData.phoneNumber}
+    const { error } = await supabase
+      .from('contact_submissions')
+      .insert({
+        full_name: formData.fullName,
+        email: formData.email,
+        phone_number: formData.phoneNumber,
+        message: formData.message || '',
+      });
 
-Message:
-${formData.message}
-    `;
-
-    const resendApiKey = Deno.env.get('RESEND_API_KEY');
-    
-    if (!resendApiKey) {
-      console.error('RESEND_API_KEY not configured');
+    if (error) {
+      console.error('Database error:', error);
       return new Response(
-        JSON.stringify({ error: 'Email service not configured' }),
-        {
-          status: 500,
-          headers: {
-            ...corsHeaders,
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-    }
-
-    const resendResponse = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${resendApiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: 'Contact Form <onboarding@resend.dev>',
-        to: ['chage@karlsonholding.com'],
-        subject: `New Contact Form Submission from ${formData.fullName}`,
-        text: emailBody,
-      }),
-    });
-
-    if (!resendResponse.ok) {
-      const errorData = await resendResponse.text();
-      console.error('Resend API error:', errorData);
-      return new Response(
-        JSON.stringify({ error: 'Failed to send email' }),
+        JSON.stringify({ error: 'Failed to save submission' }),
         {
           status: 500,
           headers: {
