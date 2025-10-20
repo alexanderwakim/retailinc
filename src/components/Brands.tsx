@@ -8,6 +8,11 @@ const brands = [
     image: '/WhatsApp Image 2025-10-20 at 12.24.20 PM.jpeg',
     link: 'https://subdued.retail-inc.com',
     id: 'brand-subdued',
+    contacts: [
+      { location: 'ABC Achrafieh', phone: '+961 01 324 455' },
+      { location: 'ABC Dbayeh', phone: '+961 04 402 613' },
+      { location: 'ABC Verdun', phone: '+961 01 798 604' },
+    ],
   },
   {
     name: 'Parfois',
@@ -89,11 +94,11 @@ export default function Brands() {
             <div
               key={index}
               id={brand.id}
-              className={`relative bg-white overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 ${brand.name === 'Subdued' ? 'cursor-pointer' : 'cursor-pointer'}`}
+              className="relative bg-white overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
               style={{ perspective: '1000px', minHeight: '540px' }}
-              onClick={brand.name === 'Subdued' ? () => window.open(brand.link, '_blank') : () => toggleCard(index)}
+              onClick={() => toggleCard(index)}
             >
-              <div className={`absolute inset-0 w-full h-full transition-transform duration-700 ${brand.name === 'Subdued' ? '' : flippedCards.has(index) ? '[transform:rotateY(180deg)]' : ''}`} style={{ transformStyle: 'preserve-3d' }}>
+              <div className={`absolute inset-0 w-full h-full transition-transform duration-700 ${flippedCards.has(index) ? '[transform:rotateY(180deg)]' : ''}`} style={{ transformStyle: 'preserve-3d' }}>
                 <div className="absolute inset-0 w-full h-full bg-white" style={{ backfaceVisibility: 'hidden' }}>
                   <div className="relative h-80 overflow-hidden">
                     <img
@@ -101,14 +106,6 @@ export default function Brands() {
                       alt={brand.name}
                       className={`w-full h-full object-cover ${brand.name === 'Subdued' ? 'object-[center_30%]' : 'object-top'}`}
                     />
-                    {brand.name === 'Subdued' && (
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
-                        <div className="bg-white text-black px-8 py-3 text-sm tracking-wide font-medium inline-flex items-center gap-2">
-                          SHOP NOW
-                          <ExternalLink size={16} />
-                        </div>
-                      </div>
-                    )}
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 pb-8">
                     {brand.name === 'Subdued' ? (
@@ -149,11 +146,10 @@ export default function Brands() {
                   </div>
                 </div>
 
-                {brand.name !== 'Subdued' && (
-                  <div
-                    className="absolute inset-0 w-full h-full bg-white flex flex-col items-center justify-center p-8 pt-16"
-                    style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
-                  >
+                <div
+                  className="absolute inset-0 w-full h-full bg-white flex flex-col items-center justify-center p-8 pt-16"
+                  style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+                >
                     {brand.contacts ? (
                       <>
                         <div className="flex flex-col items-center mb-6">
@@ -170,9 +166,9 @@ export default function Brands() {
                             </li>
                           ))}
                         </ul>
-                        {brand.name === 'Jaune' && (
+                        {(brand.name === 'Jaune' || brand.name === 'Subdued') && (
                           <a
-                            href="https://www.jaune.me/"
+                            href={brand.name === 'Jaune' ? 'https://www.jaune.me/' : 'https://subdued.retail-inc.com'}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-black text-white px-8 py-3 text-sm tracking-wide font-medium hover:bg-gray-800 transition-colors inline-flex items-center gap-2"
@@ -196,8 +192,7 @@ export default function Brands() {
                         </a>
                       </>
                     )}
-                  </div>
-                )}
+                </div>
               </div>
             </div>
           ))}
