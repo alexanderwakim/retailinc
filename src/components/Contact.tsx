@@ -32,6 +32,9 @@ export default function Contact() {
     setSubmitStatus('idle');
 
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
+
       const response = await fetch(
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-contact-email`,
         {
@@ -44,8 +47,11 @@ export default function Contact() {
             ...formData,
             phoneNumber: `${countryCode.code} ${formData.phoneNumber}`,
           }),
+          signal: controller.signal,
         }
       );
+
+      clearTimeout(timeoutId);
 
       if (response.ok) {
         setSubmitStatus('success');
@@ -58,10 +64,15 @@ export default function Contact() {
         setCountryCode(lebanonCode);
         setSearchQuery('');
       } else {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Server error:', errorData);
         setSubmitStatus('error');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+      if (error instanceof Error && error.name === 'AbortError') {
+        console.error('Request timed out after 10 seconds');
+      }
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
