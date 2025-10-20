@@ -142,6 +142,8 @@ export default function BrandsShowcase() {
             onClick={() => {
               if (currentBrand.name === 'Subdued') {
                 window.open('https://subdued.retail-inc.com', '_blank');
+              } else if (currentBrand.name === 'Jaune') {
+                window.open('https://www.jaune.me/', '_blank');
               } else {
                 const element = document.getElementById(currentBrand.sectionId);
                 if (element) {
@@ -151,7 +153,7 @@ export default function BrandsShowcase() {
             }}
             className="text-white text-sm tracking-widest uppercase border-b border-white pb-1 hover:opacity-70 transition-opacity"
           >
-            Discover More
+            {currentBrand.name === 'Subdued' || currentBrand.name === 'Jaune' ? 'Visit Website' : 'Discover More'}
           </button>
         </div>
       </div>
