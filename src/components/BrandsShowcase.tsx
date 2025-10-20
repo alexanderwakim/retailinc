@@ -42,11 +42,8 @@ export default function BrandsShowcase() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [nextIndex, setNextIndex] = useState<number | null>(null);
   const [isReady, setIsReady] = useState(false);
+  const [videosLoaded, setVideosLoaded] = useState<Set<number>>(new Set());
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-
-  useEffect(() => {
-    setIsReady(true);
-  }, []);
 
   useEffect(() => {
     videoRefs.current.forEach((video) => {
@@ -55,6 +52,20 @@ export default function BrandsShowcase() {
       }
     });
   }, []);
+
+  const handleVideoLoaded = (index: number) => {
+    setVideosLoaded(prev => {
+      const newSet = new Set(prev);
+      newSet.add(index);
+      return newSet;
+    });
+  };
+
+  useEffect(() => {
+    if (videosLoaded.has(0)) {
+      setIsReady(true);
+    }
+  }, [videosLoaded]);
 
   useEffect(() => {
     if (!isReady) return;
@@ -100,6 +111,7 @@ export default function BrandsShowcase() {
         poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect fill='%23000000' width='1920' height='1080'/%3E%3C/svg%3E"
         className="absolute inset-0 w-full h-full"
         style={{ width: '100vw', height: '80vh', objectFit: 'cover', objectPosition: 'center', backgroundColor: '#000' }}
+        onLoadedData={() => handleVideoLoaded(index)}
       >
         <source src={brand.videoUrl} type="video/mp4" />
       </video>
