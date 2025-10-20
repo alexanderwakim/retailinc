@@ -17,11 +17,10 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold mb-4 tracking-wide">QUICK LINKS</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-white transition-colors">Home</a></li>
               <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#brands" className="hover:text-white transition-colors">Our Brands</a></li>
-              <li><a href="#franchise" className="hover:text-white transition-colors">Franchise</a></li>
               <li><a href="#locations" className="hover:text-white transition-colors">Locations</a></li>
+              <li><a href="#contact" className="hover:text-white transition-colors">Contact Us</a></li>
             </ul>
           </div>
 
