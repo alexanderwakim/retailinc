@@ -80,8 +80,8 @@ export default function Navigation() {
             <button onClick={() => scrollToSection('about')} className="text-sm tracking-wide hover:text-gray-600 transition-colors">
               ABOUT
             </button>
-            <button onClick={() => scrollToSection('locations')} className="text-sm tracking-wide hover:text-gray-600 transition-colors">
-              LOCATIONS
+            <button onClick={() => scrollToSection('contact')} className="text-sm tracking-wide hover:text-gray-600 transition-colors">
+              CONTACT US
             </button>
           </div>
 
@@ -122,8 +122,8 @@ export default function Navigation() {
             <button onClick={() => scrollToSection('about')} className="block w-full text-left text-sm tracking-wide hover:text-gray-600 transition-colors">
               ABOUT
             </button>
-            <button onClick={() => scrollToSection('locations')} className="block w-full text-left text-sm tracking-wide hover:text-gray-600 transition-colors">
-              LOCATIONS
+            <button onClick={() => scrollToSection('contact')} className="block w-full text-left text-sm tracking-wide hover:text-gray-600 transition-colors">
+              CONTACT US
             </button>
           </div>
         </div>
