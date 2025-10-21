@@ -1,7 +1,6 @@
 import { useState, useMemo } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { countryCodes } from '../data/countryCodes';
-import { supabase } from '../lib/supabase';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -33,29 +32,29 @@ export default function Contact() {
     setSubmitStatus('idle');
 
     try {
-      const { error } = await supabase
-        .from('contact_submissions')
-        .insert([{
-          full_name: formData.fullName,
-          phone_number: `${countryCode.code} ${formData.phoneNumber}`,
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.fullName,
           email: formData.email,
-          message: formData.message,
-        }]);
+          message: `Phone: ${countryCode.code} ${formData.phoneNumber}\n\n${formData.message}`,
+        }),
+      });
 
-      if (error) {
-        console.error('Supabase error:', error);
-        setSubmitStatus('error');
-      } else {
-        setSubmitStatus('success');
-        setFormData({
-          fullName: '',
-          phoneNumber: '',
-          email: '',
-          message: '',
-        });
-        setCountryCode(lebanonCode);
-        setSearchQuery('');
+      if (!response.ok) {
+        throw new Error('Failed to send email');
       }
+
+      setSubmitStatus('success');
+      setFormData({
+        fullName: '',
+        phoneNumber: '',
+        email: '',
+        message: '',
+      });
+      setCountryCode(lebanonCode);
+      setSearchQuery('');
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitStatus('error');
