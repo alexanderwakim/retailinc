@@ -47,3 +47,9 @@ CREATE POLICY "Authenticated users can update submissions"
   TO authenticated
   USING (true)
   WITH CHECK (true);
+
+CREATE POLICY "Authenticated users can delete submissions"
+  ON contact_submissions
+  FOR DELETE
+  TO authenticated
+  USING (true);
