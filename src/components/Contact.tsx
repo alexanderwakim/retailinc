@@ -12,7 +12,7 @@ export default function Contact() {
           </p>
 
           <div className="space-y-6">
-            <div className="flex items-start space-x-4 p-6 border border-gray-200 hover:border-gray-900 transition-colors">
+            <div className="flex items-start space-x-4 p-6 border border-black">
               <Mail className="w-6 h-6 text-gray-900 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Email</h3>
@@ -25,7 +25,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="flex items-start space-x-4 p-6 border border-gray-200 hover:border-gray-900 transition-colors">
+            <div className="flex items-start space-x-4 p-6 border border-black">
               <Phone className="w-6 h-6 text-gray-900 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Phone</h3>
